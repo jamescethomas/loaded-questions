@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  loadedquestions-frontend:
+    image: loadedquestions-frontend
+    container_name: loadedquestions-frontend
+    labels:
+      name: loadedquestions-frontend
+    ports:
+      - "3000:80"

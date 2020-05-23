@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  loadedquestions-app:
+    image: loadedquestions-app
+    container_name: loadedquestions-app
+    labels:
+      name: loadedquestions-app
+    ports:
+      - "8080:8080"
+    command: ["java", "-jar", "/opt/loadedquestions/bin/loadedquestions-1.0.0.jar"]
+    links:
+      - loadedquestions-mongodb
+    networks:
+      - backend
+
+
+networks:
+  backend:
+    driver: "bridge"

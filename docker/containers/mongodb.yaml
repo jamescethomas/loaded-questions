@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  loadedquestions-mongodb:
+    image: mongo
+    container_name: loadedquestions-mongodb
+    hostname: "mongodb"
+    labels:
+        name: "mongodb"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - "27017:27017"
+    volumes:
+      - ../shared/mongodb/data:/data/db
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: "bridge"
