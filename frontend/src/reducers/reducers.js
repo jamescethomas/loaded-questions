@@ -25,7 +25,6 @@ function gameState(state = [], action) {
       for (var i = 0; i < tempState.players.length; i++) {
         if (tempState.player.token === tempState.players[i].token) {
           tempState.player.role = tempState.players[i].role;
-          console.log("role : " + tempState.player.role);
           break;
         }
       }

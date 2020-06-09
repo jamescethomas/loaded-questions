@@ -42,7 +42,7 @@ class WaitingForNextTurn extends Component {
   }
 
   onSubmit() {
-    fetch('/nextTurn', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/nextTurn', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

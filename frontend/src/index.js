@@ -13,7 +13,6 @@ import config from './config.js';
 const cookies = new Cookies();
 var gameState = cookies.get(config.APP_NAME + '-user');
 
-console.log(gameState);
 const store = createStore(reducers, {gameState});
 
 ReactDOM.render(

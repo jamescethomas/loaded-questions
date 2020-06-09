@@ -25,6 +25,21 @@ body {
   background-color: #282c34;
 }
 
+.MuiGrid-spacing-xs-2,
+.MuiGrid-spacing-xs-3 {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+@media (max-width:800px)  {
+  .MuiGrid-grid-xs-3,
+  .MuiGrid-grid-xs-5,
+  .MuiGrid-grid-xs-7 {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
+
 .App-header {
   display: flex;
   flex-direction: column;

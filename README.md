@@ -62,9 +62,24 @@ cd frontend
 npm install
 npm test
 ```
-###Important docker commands
+### Important docker commands
 ```bash
 docker exec -it loadedquestions-mongodb mongo
 ```
 docker deploy - update application.propeties to
 spring.data.mongodb.host=loadedquestions-mongodb
+
+Note you must create a docker network for containers to be able to communicate with eachother
+
+## TODO list
+* Fix duplicate join game issue
+    * Read session from cookies, if using same game code from cookies
+* Fix overflowing text issue
+    * Limit input length?
+    * Dynamic card size?
+* Fix name overlap issue
+    * Limit name length?
+    * Text wrap the name?
+* Add HTTPS
+* Cookies and TOS/Privacy policy Banner
+* Add light theme

@@ -37,7 +37,7 @@ class ResultsRow extends Component {
     }
 
     // Make request
-    fetch('/likeAnswer', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/likeAnswer', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

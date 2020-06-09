@@ -40,7 +40,7 @@ class Create extends Component {
     }
 
     // Make backend request to create game and then redirect to /game
-    fetch('/createGame', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/createGame', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -57,7 +57,6 @@ class Create extends Component {
 
       // Transition to Game page
       this.props.history.push('/game');
-      console.log(body);
     });
   }
 

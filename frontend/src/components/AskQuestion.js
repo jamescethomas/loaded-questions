@@ -62,7 +62,7 @@ class AskQuestion extends Component {
 
     document.removeEventListener("keydown", this.onKeyDown, false);
 
-    fetch('/askQuestion', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/askQuestion', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

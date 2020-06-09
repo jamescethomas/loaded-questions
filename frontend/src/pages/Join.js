@@ -8,6 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+import Cookies from 'universal-cookie';
+import config from '../config.js';
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions.js';
@@ -56,7 +59,7 @@ class Join extends Component {
     }
 
     // Make backend request to create game and then redirect to /game
-    fetch('/joinGame', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/joinGame', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

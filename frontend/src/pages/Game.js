@@ -56,7 +56,7 @@ class Game extends Component {
     }
 
     // TODO fetch game state
-    fetch('/gameState', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/gameState', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -69,7 +69,7 @@ class Game extends Component {
   }
 
   onStartGameClick() {
-    fetch('/startGame', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/startGame', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -82,7 +82,7 @@ class Game extends Component {
   }
 
   onEndGame() {
-    fetch('/endGame', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/endGame', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -115,7 +115,7 @@ class Game extends Component {
     if (this.props.gameState.game.state === "ASKING" && this.props.gameState.player.role !== "GUESS") {
       // Display waiting message
       return <Paper className="paper">
-        <h1><span className="text-highlight">{leader.name}</span> is asking a question.</h1>
+        <h1><span className="text-highlight">{guesser.name}</span> is asking a question.</h1>
       </Paper>
     }
 
@@ -289,7 +289,7 @@ class Game extends Component {
     var endGameButton = this.renderEndGameButtom(guesser);
 
     return <StompClient
-        endpoint="ws://localhost:8080/socket/gs-guide-websocket"
+        endpoint={process.env.REACT_APP_SERVER_SOCKET_URL + "/socket/gs-guide-websocket"}
         topic={"topic/greetings/" + this.props.gameState.game.code}
         onMessage={this.handleMessage.bind(this)}
       >
@@ -330,9 +330,6 @@ class Game extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("REDUX");
-  console.log(state);
-
   return {
     gameState: state.gameState
   }

@@ -100,7 +100,7 @@ class Answers extends Component {
       })
     }
 
-    fetch('/lockInGuesses', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/lockInGuesses', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
