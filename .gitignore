@@ -4,3 +4,4 @@ docker/shared
 target
 frontend/node_modules
 frontend/.DS_Store
+frontend/build/
