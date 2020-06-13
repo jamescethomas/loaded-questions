@@ -21,4 +21,9 @@ docker build -f docker/images/frontend/Dockerfile -t loadedquestions-frontend .
 #
 # Start the containers
 #
-bash ./docker/docker-up.sh
+arch=$(uname -m)
+if [[ $arch == *"arm"* ]];then
+	bash ./docker/docker-up-arm.sh
+else
+	bash ./docker/docker-up.sh
+fi

@@ -16,6 +16,8 @@ services:
       - ../shared/mongodb/data:/data/db
     networks:
       - backend
+    environment:
+      - AUTH=no
 
 networks:
   backend:
