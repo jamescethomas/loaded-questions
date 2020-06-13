@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
+echo "Building React Frontend"
+./build_frontend.sh
+
 #
 # Build the jar
 #
+echo "Building Java Backend"
 mvn package
 
 #
@@ -16,13 +20,14 @@ docker build -f docker/images/application/Dockerfile -t loadedquestions-app .
 #
 echo "Building Loaded Questions static frontend server image"
 docker build -f docker/images/frontend/Dockerfile -t loadedquestions-frontend .
-# docker run --name loadedquestions-frontend -d -p 3000:80 loadedquestions-frontend
 
 #
 # Start the containers
 #
+echo "Starting containers"
 arch=$(uname -m)
 if [[ $arch == *"arm"* ]];then
+	echo "Using ARM"
 	bash ./docker/docker-up-arm.sh
 else
 	bash ./docker/docker-up.sh
