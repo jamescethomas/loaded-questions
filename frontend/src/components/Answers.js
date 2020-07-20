@@ -20,8 +20,12 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faBook } from '@fortawesome/free-solid-svg-icons'
 
 // Lock it in Array
-const LOCK_IT_IN = ["Lock It In!", "Lock It In?", "Is that Your Final Answer?", "Continue.", "See if you are right!", "Affirmative."];
-
+const LOCK_IT_IN = ["Lock It In!", 
+                    "Lock It In?", 
+                    "Is that Your Final Answer?", 
+                    "Continue.", 
+                    "See if you are right!", 
+                    "Affirmative."];
 
 class Answers extends Component {
   constructor(props) {
@@ -38,12 +42,10 @@ class Answers extends Component {
       }
     }
 
-
-
     this.state = {
       disableSubmit: true,
       answeringPlayers: answeringPlayers,
-      buttonText: this.randomizeLockItIn()
+      buttonText: this.randomButtonText()
     }
   }
 
@@ -116,12 +118,11 @@ class Answers extends Component {
     })
   }
 
-  // Function to randomize Lock it In Phrases.
-  randomizeLockItIn() {
+  // Function to random answer buttonText intead of static phrases.
+  randomButtonText() {
     var randomIndex = Math.floor(Math.random() * Math.floor(LOCK_IT_IN.length));
-    return LOCK_IT_IN [randomIndex];
+    return LOCK_IT_IN[randomIndex];
   }
-
 
   render() {
     var answers = this.props.gameState.game.answers;
