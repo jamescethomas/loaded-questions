@@ -17,6 +17,14 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faBook } from '@fortawesome/free-solid-svg-icons'
 
+const preMadeQuestions = [
+  "Given the choice of anyone in the world, whom would you want as a dinner guest?",
+  "Would you like to be famous? In what way?",
+  "Before making a telephone call, do you ever rehearse what you are going to say? Why?",
+  "What would constitute a \"perfect\" day for you?",
+  "Describe when you last sang to yourself."
+];
+
 class AskQuestion extends Component {
   constructor(props) {
     super(props);
@@ -74,6 +82,21 @@ class AskQuestion extends Component {
       }),
     });
   }
+  onGenerateQuestionClick() {
+    var needQuestion = preMadeQuestions[Math.floor(Math.random() * preMadeQuestions.length)];
+
+    fetch(process.env.REACT_APP_SERVER_URL + '/askQuestion', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: this.props.gameState.player.token,
+        question: needQuestion
+      }),
+    });
+  }
 
   render() {
     return <div><Paper className="paper">
@@ -94,6 +117,11 @@ class AskQuestion extends Component {
         <br/>
         <Button variant="contained" color="primary" fullWidth={true} onClick={this.onSubmitQuestion.bind(this)}>
           Submit question
+        </Button>
+        <br/>
+        <br/>
+        <Button variant="contained" color="primary" fullWidth={true} onClick={this.onGenerateQuestionClick.bind(this)}>
+          Generate Pre-Made Question
         </Button>
         </div>
   }
